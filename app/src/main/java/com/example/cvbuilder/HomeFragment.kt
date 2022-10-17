@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
 import com.example.cvbuilder.databinding.FragmentHomeBinding
+import com.example.cvbuilder.databinding.ItemHomeBinding
 
-class HomeFragment : Fragment(R.layout.fragment_home) {
+class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
 
@@ -22,8 +24,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         binding.imageView.setImageResource(DataService.default.home.image)
-        binding.name.text = DataService.default.home.name
+        binding.skillTitle.text = DataService.default.home.name
         binding.role.text = DataService.default.home.role
+        binding.recv.adapter = SkillAdapter(DataService.default.home.skills)
         return binding.root
     }
 
@@ -31,4 +34,23 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onDestroyView()
         _binding = null
     }
+}
+class SkillAdapter(var list: HashMap<String,String>) : RecyclerView.Adapter<SkillAdapter.MyViewHolder>() {
+
+    private lateinit var binding: ItemHomeBinding
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SkillAdapter.MyViewHolder {
+        binding = ItemHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return MyViewHolder(binding.root)
+    }
+
+    override fun onBindViewHolder(holder: SkillAdapter.MyViewHolder, position: Int) {
+        val title=list.keys.toTypedArray()[position]
+        binding.skillTitle.text = title
+        binding.skillDetails.text = list[title]
+    }
+
+    override fun getItemCount() = list.size
+
+    inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }
