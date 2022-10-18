@@ -36,11 +36,11 @@ object DataService{
         works.add(WorkExperience(R.drawable.netflix_icon,"Software Engineer","Netflix","January 2015","December 2018","IA, USA","Working on different projects","https://www.netflix.com"))
 
         val contacts = arrayListOf<Contact>()
-        contacts.add(Contact(R.drawable.phone_icon,"Phone Number","+16412330000",""))
-        contacts.add(Contact(R.drawable.email_icon,"Email","jhondoe@gmail.com",""))
-        contacts.add(Contact(R.drawable.linkedin_icon,"LinkedIn","linkedin.com/jhondoe",""))
-        contacts.add(Contact(R.drawable.github_icon,"GITHUB","github.com/jhondoe",""))
-        contacts.add(Contact(R.drawable.facebook_icon,"Facebook","facebook.com/jhondoe",""))
+        contacts.add(Contact(R.drawable.phone_icon,"Phone Number","tel:16412330000","phone"))
+        contacts.add(Contact(R.drawable.email_icon,"Email","jhondoe@gmail.com","email"))
+        contacts.add(Contact(R.drawable.linkedin_icon,"LinkedIn","https://linkedin.com","web"))
+        contacts.add(Contact(R.drawable.github_icon,"GITHUB","https://github.com/teamSevenMiu/CVBuilder","web"))
+        contacts.add(Contact(R.drawable.facebook_icon,"Facebook","https://facebook.com","web"))
 
         return CV(home,about,works,contacts)
 
