@@ -31,7 +31,8 @@ data class WorkExperience(val image:Int,
                           val start:String,
                           val end:String,
                           val location:String,
-                          val responsibilty:String)
+                          val responsibilty:String,
+                          val url: String)
 
 data class Contact(val image:Int,
                    val title:String,

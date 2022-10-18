@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cvbuilder.databinding.FragmentHomeBinding
 import com.example.cvbuilder.databinding.ItemHomeBinding
@@ -26,6 +27,8 @@ class HomeFragment : Fragment() {
         binding.imageView.setImageResource(DataService.default.home.image)
         binding.skillTitle.text = DataService.default.home.name
         binding.role.text = DataService.default.home.role
+
+        binding.recv.layoutManager = LinearLayoutManager(requireContext())
         binding.recv.adapter = SkillAdapter(DataService.default.home.skills)
         return binding.root
     }

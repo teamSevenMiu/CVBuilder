@@ -1,14 +1,19 @@
 package com.example.cvbuilder
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cvbuilder.databinding.FragmentWorkBinding
 import com.example.cvbuilder.databinding.ItemWorkBinding
+
 
 class WorkFragment : Fragment() {
 
@@ -26,7 +31,7 @@ class WorkFragment : Fragment() {
 
         _binding = FragmentWorkBinding.inflate(inflater, container, false)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerView.adapter = WorkAdapter(DataService.default.workExperience)
+        binding.recyclerView.adapter = WorkAdapter(DataService.default.workExperience,requireContext())
         return binding.root
     }
 
@@ -36,7 +41,7 @@ class WorkFragment : Fragment() {
     }
 }
 
-class WorkAdapter(var list: ArrayList<WorkExperience>) : RecyclerView.Adapter<WorkAdapter.MyViewHolder>() {
+class WorkAdapter(var list: ArrayList<WorkExperience>,var context: Context) : RecyclerView.Adapter<WorkAdapter.MyViewHolder>() {
 
     private lateinit var binding: ItemWorkBinding
 
@@ -52,6 +57,11 @@ class WorkAdapter(var list: ArrayList<WorkExperience>) : RecyclerView.Adapter<Wo
         binding.subbody.text = list[position].location
         binding.footer.text = list[position].responsibilty
         binding.image.setImageResource(list[position].image)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(list[position].url))
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount() = list.size
