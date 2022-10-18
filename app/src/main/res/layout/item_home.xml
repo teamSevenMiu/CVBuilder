@@ -9,7 +9,7 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
         android:id="@+id/skill_title"
         android:text="Programming Languages"
-        android:gravity="center"
+        android:gravity="left"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <Space
@@ -19,6 +19,7 @@
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:text="Used programming language : C/C++ Java Python, Html/CS Python Java script and other things"
         android:id="@+id/skill_details"
+        android:gravity="left"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 </LinearLayout>

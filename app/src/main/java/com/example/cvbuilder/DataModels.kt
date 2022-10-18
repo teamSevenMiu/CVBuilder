@@ -12,7 +12,9 @@ data class Home(val image:Int,
                 val name:String,
                 val role:String,
                 var careerNote:String,
-                val skills:HashMap<String,String>)
+                var skills:ArrayList<Skills>)
+
+data class Skills(val title: String, val subtitle:String)
 
 data class About(val intro:String,
                  val education:ArrayList<Education>,

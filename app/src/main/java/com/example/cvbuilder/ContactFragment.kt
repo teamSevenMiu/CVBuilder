@@ -58,21 +58,13 @@ class ContactAdapter(var list: ArrayList<Contact>,var context: Context) : Recycl
         binding.title.text = list[position].value
         binding.subtitle.text = list[position].title
         binding.image.setImageResource(list[position].image)
-        binding.title.setOnClickListener{
-            val intent:Intent
-            if(list[position].url != "email"){
-                     intent = Intent(Intent.ACTION_VIEW, Uri.parse(list[position].value))
-                    context.startActivity(intent)
-                }else{
-                var input = "Hi Jhondoe!"
-                val intent = Intent()
-                intent.action = Intent.ACTION_SEND
-                intent.type = "text/plain"
-                intent.putExtra(Intent.EXTRA_TEXT, input)
-                context.startActivity(intent)
-            }
-            }
+
+        holder.itemView.setOnClickListener{
+            val type = if (list[position].title == "Email") Intent.ACTION_SENDTO else Intent.ACTION_VIEW
+            val intent = Intent(type, Uri.parse(list[position].url))
+            context.startActivity(intent)
         }
+    }
 
     override fun getItemCount() = list.size
 

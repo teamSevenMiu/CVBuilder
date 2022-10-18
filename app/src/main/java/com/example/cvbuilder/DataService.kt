@@ -5,13 +5,14 @@ object DataService{
 
     val default = jhonDoeCV()
 
+
     private fun jhonDoeCV():CV{
 
-        val skills = HashMap<String, String> ()
+        var skills = arrayListOf<Skills>()
+        skills.add(Skills("Programming Language","Java,C++,Swift,Kotlin"))
+        skills.add(Skills("Tools","Eclipse, Android Studio, XCode, IntelIJ"))
+        skills.add(Skills("Database","Oracle, MySQL, SQLite, CoreData, RoomDB"))
 
-        skills["Programming Language"] = "Java,C++,Swift,Kotlin"
-        skills["Tools"] = "Eclipse, Android Studio, XCode, IntelIJ"
-        skills["Database"] = "Oracle, MySQL, SQLite, CoreData, RoomDB"
 
         val home = Home(R.drawable.profile_icon,R.drawable.apple_icon,"Jhon Doe","Software Architect","Passionate software geek",skills)
 
@@ -36,11 +37,11 @@ object DataService{
         works.add(WorkExperience(R.drawable.netflix_icon,"Software Engineer","Netflix","January 2015","December 2018","IA, USA","Working on different projects","https://www.netflix.com"))
 
         val contacts = arrayListOf<Contact>()
-        contacts.add(Contact(R.drawable.phone_icon,"Phone Number","tel:16412330000","phone"))
-        contacts.add(Contact(R.drawable.email_icon,"Email","jhondoe@gmail.com","email"))
-        contacts.add(Contact(R.drawable.linkedin_icon,"LinkedIn","https://linkedin.com","web"))
-        contacts.add(Contact(R.drawable.github_icon,"GITHUB","https://github.com/teamSevenMiu/CVBuilder","web"))
-        contacts.add(Contact(R.drawable.facebook_icon,"Facebook","https://facebook.com","web"))
+        contacts.add(Contact(R.drawable.phone_icon,"Phone Number","+16412330000","tel:16412330000"))
+        contacts.add(Contact(R.drawable.email_icon,"Email","jhondoe@gmail.com","mailto:jhondoe@gmail.com"))
+        contacts.add(Contact(R.drawable.linkedin_icon,"LinkedIn","linkedin.com/jhondoe","https://linkedin.com"))
+        contacts.add(Contact(R.drawable.github_icon,"GITHUB","github.com/jhondoe","https://github.com/"))
+        contacts.add(Contact(R.drawable.facebook_icon,"Facebook","facebook.com/jhondoe","https://facebook.com"))
 
         return CV(home,about,works,contacts)
 
